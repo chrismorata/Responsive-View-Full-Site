@@ -7,6 +7,7 @@ var viewport = $('meta[name="viewport"]');
 localStorage.isResponsive = (localStorage.isResponsive == undefined) ? 'true' : localStorage.isResponsive;
 
 var showFullSite = function(){    
+    localStorage.responsiveViewportValue = viewport.attr('content');
     viewport.attr('content', 'width=' + targetWidth);  
     
     if(!$('.rwd-display-options #view-responsive').length){
@@ -18,7 +19,7 @@ var showFullSite = function(){
 
 var showMobileOptimized = function(){
     localStorage.isResponsive = 'true';
-    viewport.attr('content', 'width=' + deviceWidth);
+    viewport.attr('content', localStorage.responsiveViewportValue);
 }
 
 // if the user previously chose to view full site, change the viewport
